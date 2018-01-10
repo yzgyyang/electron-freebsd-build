@@ -9,7 +9,7 @@ svnlite co -r435428 svn://svn.freebsd.org/ports/head/www/chromium chromium
 cd chromium
 patch -p1  <../chromium_make.diff
 rm files/patch-third__party_ffmpeg_ffmpeg__generated.gni.orig
-make configure
+make configure DISABLE_VULNERABILITIES=yes
 cd ..
 git clone https://github.com/electron/libchromiumcontent.git
 cd libchromiumcontent
