@@ -2,16 +2,14 @@ diff --git a/brightray.gyp b/brightray.gyp
 index d089dba..2c443f8 100644
 --- a/brightray.gyp
 +++ b/brightray.gyp
-@@ -1,7 +1,8 @@
- {
+@@ -2,6 +2,7 @@
    'variables': {
      # The libraries brightray will be compiled to.
--    'linux_system_libraries': 'gtk+-2.0 dbus-1 x11 x11-xcb xcb xi xcursor xdamage xrandr xcomposite xext xfixes xrender xtst xscrnsaver gconf-2.0 gmodule-2.0 nss'
-+    'linux_system_libraries': 'gtk+-2.0 dbus-1 x11 x11-xcb xcb xi xcursor xdamage xrandr xcomposite xext xfixes xrender xtst xscrnsaver gconf-2.0 gmodule-2.0 nss',
-+    'freebsd_system_libraries': 'gtk+-2.0 dbus-1 x11 x11-xcb xcb xi xcursor xdamage xrandr xcomposite xext xfixes xrender xtst xscrnsaver gconf-2.0 gmodule-2.0 nss'
-   },
-   'includes': [
-     'filenames.gypi',
+     'linux_system_libraries': 'gtk+-3.0 dbus-1 x11 x11-xcb xcb xi xcursor xdamage xrandr xcomposite xext xfixes xrender xtst xscrnsaver gconf-2.0 gmodule-2.0 nss',
++    'freebsd_system_libraries': 'gtk+-3.0 dbus-1 x11 x11-xcb xcb xi xcursor xdamage xrandr xcomposite xext xfixes xrender xtst xscrnsaver gconf-2.0 gmodule-2.0 nss',
+     'conditions': [
+       ['target_arch=="mips64el"', {
+         'linux_system_libraries': '<(linux_system_libraries) libpulse',
 @@ -40,6 +41,76 @@
        'sources': [ '<@(brightray_sources)' ],
        'conditions': [
@@ -46,7 +44,7 @@ index d089dba..2c443f8 100644
 +              '<!@(<(pkg-config) --libs-only-l <(freebsd_system_libraries))',
 +              '-lexecinfo -lkvm -lgconf-2 -lgio-2.0 ',
 +              '-lxml2 -lfontconfig -lfreetype -lexpat -lharfbuzz -lpng16 -lcups ',
-+              '-lspeechd -lm -lz -lrt  -lwebp -lwebpdemux -ljpeg ',
++              '-lspeechd -lm -lz -lrt  -ljpeg ',
 +              '-lasound -lsnappy -lxslt -lcups -lspeechd -ldbus-1 -lFLAC '
 +            ],
 +          },
@@ -157,15 +155,4 @@ index 157660a..f665a95 100644
    gfx::ImageSkia* GetDefaultWindowIcon() const override;
  #endif
    views::NonClientFrameView* CreateDefaultNonClientFrameView(
---- a/vendor/brightray/brightray.gypi	2017-12-07 15:20:02.142351000 +0400
-+++ b/vendor/brightray/brightray.gypi	2017-12-07 15:20:14.381520000 +0400
-@@ -93,7 +93,7 @@
-         'abstract': 1,
-         'defines': [
-           # Used by content_browser_client.h:
--          'ENABLE_WEBRTC',
-+          #'ENABLE_WEBRTC',
-           # We are using Release version libchromiumcontent:
-           'NDEBUG',
-           # Needed by gin:
 
